@@ -41,6 +41,41 @@ namespace SO73752000.Controllers
             return View();
         }
 
+
+        public async Task<IActionResult> ActiveEmailAccount(ActiveEmailResult result)
+        {
+            if (ModelState.IsValid)
+
+            {
+         
+                switch (result)
+                {
+                    case ActiveEmailResult.Error:
+                        ModelState.AddModelError("CustomError", "کاربر عزیز، درخواست شما با خطا مواجه شد. ");
+                      
+
+                        break;
+
+                    case ActiveEmailResult.NotActive:
+                        ModelState.AddModelError("CustomError", "کاربر عزیز، حساب شما فعال نمی باشد. ");
+                       
+                        break;
+
+                    case ActiveEmailResult.Success:
+                        ModelState.AddModelError("CustomError", "کاربر عزیز، حساب شما با موفقیت فعال شد. ");
+                
+                        break;
+
+                }
+
+                ViewBag.active = result;
+
+            }
+
+
+            return View();
+
+        }
         public IActionResult Privacy()
         {
             return View();
