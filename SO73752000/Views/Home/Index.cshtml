@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="alert @ViewData["AlertClass"]">
+    @Html.ValidationMessage("CustomError")
+</div>
+
+<a asp-controller="Home" asp-action="Index" asp-route-result="Error">Show Error</a>
+<br />
+<a asp-controller="Home" asp-action="Index" asp-route-result="NotActive">Show NotActive</a>
+<br />
+<a asp-controller="Home" asp-action="Index" asp-route-result="Success">Show Success</a>
